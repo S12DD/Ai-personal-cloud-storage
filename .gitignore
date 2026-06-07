@@ -6,3 +6,5 @@ __pycache__/
 *.db
 dist/
 .venv/
+node_modules/
+.env
