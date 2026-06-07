@@ -5,13 +5,23 @@ A full-stack personal cloud storage application with AI-powered file analysis. B
 ## Features
 
 ✨ **Core Features**
-- 🔐 User authentication with JWT tokens
-- 📁 File upload, download, and management
-- 🏷️ AI-powered file analysis (image OCR, text summarization)
-- 🔗 Shareable file links with expiration
-- 📊 File metadata and tagging
-- 🎨 Responsive web interface with Tailwind CSS
-- 📱 Mobile-friendly design
+## Features
+
+- 🔐 User Authentication with JWT Tokens
+- 📁 File Upload, Download and Management
+- 📂 Folder Creation and Organization
+- 🎯 Drag & Drop File Movement Between Folders
+- 👀 File Preview for Images, PDFs and Text Files
+- ✏️ File Rename Functionality
+- 🔗 Shareable File Links with Expiration
+- 🤖 AI-Powered PDF Summarization
+- 🏷️ Keyword Extraction from Documents
+- 🖼️ OCR Text Extraction from Images
+- 📊 File Metadata and AI Insights
+- 🔍 File Search Functionality
+- 🎨 Responsive UI with Tailwind CSS
+- 📱 Mobile-Friendly Design
+- 💾 SQLite Database Integration
 
 ✨ **Backend Features**
 - REST API with FastAPI
