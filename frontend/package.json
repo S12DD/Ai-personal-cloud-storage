@@ -1,0 +1,23 @@
+{
+  "name": "personal-cloud-frontend",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "axios": "^1.4.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@heroicons/react": "^2.2.0",
+    "autoprefixer": "^10.5.0",
+    "postcss": "^8.5.15",
+    "react-query": "^3.39.3",
+    "tailwindcss": "^3.4.17",
+    "vite": "^6.4.3"
+  }
+}

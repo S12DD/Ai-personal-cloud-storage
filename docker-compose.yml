@@ -1,0 +1,88 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:15-alpine
+    container_name: personal-cloud-db
+    environment:
+      POSTGRES_USER: cloud_user
+      POSTGRES_PASSWORD: cloud_password
+      POSTGRES_DB: personal_cloud
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - '5432:5432'
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U cloud_user']
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  redis:
+    image: redis:7-alpine
+    container_name: personal-cloud-redis
+    ports:
+      - '6379:6379'
+    healthcheck:
+      test: ['CMD', 'redis-cli', 'ping']
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  backend:
+    build: ./backend
+    container_name: personal-cloud-backend
+    command: uvicorn main:app --host 0.0.0.0 --port 8000
+    ports:
+      - '8000:8000'
+    environment:
+      DATABASE_URL: postgresql://cloud_user:cloud_password@postgres:5432/personal_cloud
+      REDIS_URL: redis://redis:6379/0
+      SECRET_KEY: ${SECRET_KEY:-your-secret-key-change-in-production}
+      FILES_DIR: /app/uploads
+    volumes:
+      - ./backend/uploads:/app/uploads
+      - ./backend:/app
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    healthcheck:
+      test: ['CMD', 'curl', '-f', 'http://localhost:8000/docs']
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  worker:
+    build: ./backend
+    container_name: personal-cloud-worker
+    command: celery -A worker.tasks worker --loglevel=info
+    environment:
+      DATABASE_URL: postgresql://cloud_user:cloud_password@postgres:5432/personal_cloud
+      REDIS_URL: redis://redis:6379/0
+    volumes:
+      - ./backend/uploads:/app/uploads
+      - ./backend:/app
+    depends_on:
+      - postgres
+      - redis
+      - backend
+
+  frontend:
+    build: ./frontend
+    container_name: personal-cloud-frontend
+    ports:
+      - '3000:3000'
+    environment:
+      VITE_API_URL: http://localhost:8000
+    depends_on:
+      - backend
+
+volumes:
+  postgres_data:
+
+networks:
+  default:
+    name: personal-cloud-network

@@ -1,0 +1,17 @@
+fastapi
+uvicorn[standard]
+python-multipart
+sqlalchemy
+alembic
+passlib[argon2]
+pyjwt
+pydantic[email]
+python-dotenv
+requests
+Pillow
+transformers
+torch>=1.8.0
+tqdm
+celery[redis]
+redis
+pytesseract

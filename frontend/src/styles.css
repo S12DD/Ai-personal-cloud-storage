@@ -1,0 +1,22 @@
+/* stylelint-disable at-rule-no-unknown */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body{
+  background:#f8fafc;
+  font-family: Inter, sans-serif;
+}
+
+.card{
+  background-color: #ffffff;
+  border-radius: 1rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+              0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  border: 1px solid #e5e7eb;
+}
+
+.gradient-header{
+  background: linear-gradient(135deg,#2563eb,#7c3aed);
+}
+
