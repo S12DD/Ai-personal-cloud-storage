@@ -309,3 +309,17 @@ For issues and questions, please create an issue in the repository.
 - ✅ Docker support
 - ✅ Comprehensive API documentation
 - ✅ Demo user for testing
+
+## 📸 Screenshots
+
+### Login Page
+![Login](screenshots/login-page.png)
+
+### Dashboard
+![Dashboard](screenshots/dashboard.png)
+
+### File Management
+![Files](screenshots/files-page.png)
+
+### AI Insights
+![AI](screenshots/ai-insights.png)
