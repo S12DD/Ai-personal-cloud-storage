@@ -5,7 +5,7 @@ const API = import.meta.env.VITE_API_URL || 'http://localhost:8000'
 
 export default function Login({ onLogin, onSwitchPage }) {
   const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('demo123')
+  const [password, setPassword] = useState('')
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
 
