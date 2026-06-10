@@ -4,7 +4,7 @@ import axios from 'axios'
 const API = import.meta.env.VITE_API_URL || 'http://localhost:8000'
 
 export default function Login({ onLogin, onSwitchPage }) {
-  const [email, setEmail] = useState('demo@example.com')
+  const [email, setEmail] = useState('')
   const [password, setPassword] = useState('demo123')
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
